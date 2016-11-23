@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="style.css">
+
+<body>
+  <script src=build/build.js></script>
+  <table border='0' id='items' cellpadding=5px>
+    <tr>
+      <td id=nameheader><b>Name</b></td>
+      <td id=descheader><b>Description</b></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <form>
+    <table border="0" cellpadding=4 id=form>
+      <tr>
+        <td>
+          <label for="itemname">Name</label>
+          <input id='itemname' type="text" name="itemname" placeholder="What do you want">
+        </td>
+        <td>
+          <label for="itemdescription">Description</label>
+          <input id='itemdescription' type="text" name="itemdescription" placeholder="Describe it">
+        </td>
+        <td>
+          <label for="itemurl">URL</label>
+          <input id='itemurl' type="text" name="itemurl" placeholder="Where to find it">
+        </td>
+        <td>
+          <button type="submit" id='submit'>Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>

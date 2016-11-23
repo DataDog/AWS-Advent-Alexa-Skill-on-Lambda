@@ -1,0 +1,2 @@
+GetList get me my gift list
+GetAvailableList get me available gifts

@@ -7,7 +7,8 @@
     "runlocalserver": "pushd .;cd alexa-app-server/examples;node server;popd",
     "copy": "cp *.js alexa-app-server/examples/apps/giftlister/; cp package.json alexa-app-server/examples/apps/giftlister/",
     "local": "npm run copy; npm run runlocalserver",
-    "package": "rm index.zip;zip -X -r index.zip *.js *.json node_modules/",
+    "localtest": "node test.js",
+    "package": "rm index.zip;zip -X -r index.zip index.js giftlist-helper.js *.json node_modules/",
     "deploy": "aws-vault exec demo -- aws lambda update-function-code --function-name gift-list --zip-file fileb://index.zip"
   },
   "author": "",

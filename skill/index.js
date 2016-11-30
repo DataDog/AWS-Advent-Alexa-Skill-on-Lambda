@@ -19,7 +19,6 @@ App.intent('getListIntent', {
     var reprompt = 'Let me read your gift lists';
     var giftHelper = new GiftHelper();
     giftHelper.requestGiftList().then(function (giftlist) {
-      console.log('in gifthelper get list: %j', giftlist);
       res.say(giftHelper.formatGiftList(giftlist)).send();
     }).catch(function (err) {
       console.log(err.statusCode);

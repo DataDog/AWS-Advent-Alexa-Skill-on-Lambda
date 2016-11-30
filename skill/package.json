@@ -1,63 +1,21 @@
 {
-  "name": "gift-list",
-  "version": "0.0.0",
-  "description": "An Alexa skill for the Amazon Echo.",
-  "main": "build/index.js",
+  "name": "giftlister",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "lint": "eslint src/**/*.js test/**/*.js",
-    "build": "npm-run-all --parallel build:skill build:utterances",
-    "build:skill": "webpack -p --config config/webpack.config.babel.js",
-    "build:utterances": "mkdir -p build && bin/utterances --schema model/schema.json --utterances model/UTTERANCES --dictionary model/dictionary.json > build/UTTERANCES",
-    "pretest": "npm run build",
-    "posttest": "npm run lint",
-    "package": "bestzip build/package.zip build/index.js build/UTTERANCES",
-    "predeploy": "npm run package",
-    "deploy": "bin/deploy --config config/lambda.config.js --package build/package.zip"
+    "runlocalserver": "pushd .;cd alexa-app-server/examples;node server;popd",
+    "copy": "cp *.js alexa-app-server/examples/apps/giftlister/; cp package.json alexa-app-server/examples/apps/giftlister/",
+    "local": "npm run copy; npm run runlocalserver",
+    "package": "rm index.zip;zip -X -r index.zip *.js *.json node_modules/",
+    "deploy": "aws-vault exec demo -- aws lambda update-function-code --function-name gift-list --zip-file fileb://index.zip"
   },
-  "ava": {
-    "babel": "inherit"
-  },
-  "devDependencies": {
-    "alexa-annotations": "^9.0.1",
-    "alexa-response": "^4.0.1",
-    "alexa-request": "^0.2.1",
-    "alexa-ssml-jsx": "^1.0.1",
-    "alexa-utterances": "^0.2.1",
-    "ava": "^0.16.0",
-    "babel-cli": "^6.6.5",
-    "babel-eslint": "^7.1.0",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-react-jsx": "^6.7.4",
-    "babel-polyfill": "^6.7.4",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-stage-1": "^6.5.0",
-    "bestzip": "^1.1.3",
-    "eslint": "^3.8.1",
-    "isomorphic-fetch": "^2.2.1",
-    "json-loader": "^0.5.4",
-    "node-aws-lambda": "^0.1.8",
-    "nomnom": "^1.8.1",
-    "npm-run-all": "^3.1.1",
-    "webpack": "^1.12.14"
-  },
-  "files": [
-    "build",
-    "src"
-  ],
-  "keywords": [
-    "alexa",
-    "alexa-skill",
-    "echo",
-    "skill"
-  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "aws-lambda-invoke": "^3.0.0",
-    "http": "0.0.0",
-    "isomorphic-fetch": "^2.2.1",
-    "node-rest-client": "^2.0.1",
-    "sync-request": "^3.0.1",
-    "unirest": "^0.5.1"
+    "alexa-app": "^2.3.4",
+    "lodash": "^4.17.2",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
   }
 }

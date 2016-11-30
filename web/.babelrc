@@ -3,7 +3,6 @@
   "plugins": [
     "add-module-exports",
     "transform-runtime",
-    // "transform-inline-environment-variables",
     "transform-object-rest-spread"
   ]
 }
